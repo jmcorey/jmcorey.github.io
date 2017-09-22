@@ -76,6 +76,18 @@
 
 -----
 
+## CIDR
+
+![x](https://s-media-cache-ak0.pinimg.com/originals/cf/94/5b/cf945bdaf28ed2b40923f9df980e4948.png)
+
+-----
+
+## CIDR and subnet masks
+
+![x](http://www.2000trainers.com/aimg/article346-71-image006.jpg)
+
+-----
+
 ## Hostname translation
 
 ```
@@ -239,6 +251,28 @@ rtt min/avg/max/mdev = 0.695/0.712/0.726/0.027 ms
 ## Header wrapping
 
 ![x](http://www.cellbiol.com/bioinformatics_web_development/wp-content/uploads/2017/01/the_encapsulated_structure_of_tcp_ip_packets_cellbiol.com_-1-1024x938.png)
+
+-----
+
+## Tcpdump and Netcat
+
+Host A sends:
+
+```
+% echo uh | nc -u 192.168.1.255 5001
+```
+
+Host B dumps packets:
+
+```
+% # tcpdump -v -n -nn -x -i enp6s0 port 5001
+tcpdump: listening on enp6s0, link-type EN10MB (Ethernet), capture size 262144 bytes
+18:55:42.218277 IP (tos 0x0, ttl 64, id 64952, offset 0, flags [DF], proto UDP (17), length 31)
+    192.168.1.14.60930 > 192.168.1.255.5001: UDP, length 3
+	0x0000:  4500 001f fdb8 4000 4011 b8b7 c0a8 010e
+	0x0010:  c0a8 01ff ee02 1389 000b fa85 7568 0a00
+	0x0020:  0000 0000 0000 0000 0000 0000 0000
+```
 					</script>
 				</section>
 
