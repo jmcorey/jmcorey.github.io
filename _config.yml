@@ -3,13 +3,13 @@
 #
 
 # Name of your site (displayed in the header)
-name: Another Tech Journal
+name: It's All Made of Sand
 
 # Short bio or description (displayed in the header)
-description: Sharing various (tech) recipes and experiences
+description: Sharing various experiences
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
-avatar: https://avatars1.githubusercontent.com/u/14081326?v=4&s=400&u=a7406dd13d55be9bb7431074d4888dd3e6e66ea0
+avatar: images/self1.jpg
 
 #
 # Flags below are optional
@@ -41,7 +41,7 @@ google_analytics:
 
 # Your website URL (e.g. http://barryclark.github.io or http://www.barryclark.co)
 # Used for Sitemap.xml and your RSS feed
-url:
+url: https://jmcorey.github.io
 
 # If you're hosting your site at a Project repository on GitHub pages
 # (http://yourusername.github.io/repository-name)
