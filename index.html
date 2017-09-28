@@ -1,43 +1,18 @@
-<html>
-<head>
-<style type="text/css">
-body {
-    background-color: #9df; color: #0af;
-    font-family: sans-serif; font-size: 0.8em;
-}
-a:link { color: #3bf; }
-a:visited { color: #3bf; }
-h2 {
-    color: #9df;
-    margin: 0;
-    padding: 0;
-    display: inline;
-} 
-h3 {
-    background-color: #79b; color: #0f0; padding: 0.2ex; border-width: 0px;
-}
-div.bblockthird { padding: 1ex; margin: 0.5%;
-    border-style: solid; border-width: 2px; border-color: #8fcce4;
-    color: #9df; background-color: #000;
-    padding-top: 0.4ex;
-}
-div.bblockthird input {
-    padding: 0px; margin: 1px;
-    background-color: #202828;
-    border-color: #8fcce4;
-    color: #0ff;
-}
-div.bblockthird form  { padding: 0px; margin: 0px; }
-div.bblockthird ul { margin: 0; padding: 0; margin-left: 1em;}
-div.col3 { width: 33%; float: left; height: 100%; padding: 0; margin: 0; }
-</style>
+---
+layout: default
+---
 
-<title>start page</title>
-</head>
+<div class="posts">
+  {% for post in site.posts %}
+    <article class="post">
 
-<body>
+      <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
 
-    <ul><li><a href="techblog/index.html">tech blog</a></li></ul>
-    <ul><li><a href="example/networking.html">networking slides</a></li></ul>
-</body>
-</html>
+      <div class="entry">
+        {{ post.excerpt }}
+      </div>
+
+      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
+    </article>
+  {% endfor %}
+</div>
