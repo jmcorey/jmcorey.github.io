@@ -9,7 +9,7 @@ name: It's All Made of Sand
 description: Sharing various experiences
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
-avatar: images/self1.jpg
+avatar: /images/self1.jpg
 
 #
 # Flags below are optional
