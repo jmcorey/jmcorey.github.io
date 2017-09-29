@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>simple applications of XOR</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/black.css">
@@ -24,47 +24,27 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-				<section data-markdown data-separator="---">
+				<section data-markdown data-separator="-----">
 					<script type="text/template">
-## Markdown support
+## Secure copy over network
 
-Write content using inline or external Markdown.
-
----
-
-## Images?
-
-I do hope this works...
-
-![MPEG/VCEG History](jc.png)
-
----
-
-## Is this in a separate slide?
-
-It would appear that the syntax highlighting will be tricky.
-
-* testing
-* one<!-- .element: class="fragment" -->
-* two<!-- .element: class="fragment" -->
-* three<!-- .element: class="fragment" -->
-
----
-
-PS here is the markdown [readme](https://github.com/hakimel/reveal.js#markdown).
+In the old days:
 
 ```
-<section data-markdown>
-  ## Markdown support
-
-  Write content using inline or external Markdown.
-  Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
-</section>
+rcp myfile lab:myfile
 ```
+
+Nowadays, we use SSH's secure copy:
+
+```
+scp myfile lab:myfile
+```
+
+-----
+
 					</script>
 				</section>
+
 			</div>
 		</div>
 
@@ -81,7 +61,9 @@ PS here is the markdown [readme](https://github.com/hakimel/reveal.js#markdown).
 					{ src: 'plugin/markdown/markdown.js' },
 					{ src: 'plugin/notes/notes.js', async: true },
 					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-				]
+				],
+                                width: 1820,
+                                height: 980
 			});
 		</script>
 	</body>
