@@ -301,6 +301,61 @@ console.log('Go to the store and buy some more, 99 bottles of beer on the wall')
 ```
 
 -----
+## LOLCAT
+
+```
+HAI
+    VISIBLE "O HAI! IM IN UR BEERZ!"
+    I HAS A VAR
+    LOL VAR R 99
+    IM IN YR LOOP
+        VISIBLE VAR!
+        VISIBLE " BOTTLZ OF BEER N TEH WALL, "!
+        VISIBLE VAR!
+        VISIBLE " BOTTLZ OF BEER!"
+        VISIBLE "TAKE 1 DWN, PAS IT AROUN, "!
+        NERFZ VAR!!
+        IZ VAR LIEK 0?
+            YARLY
+                VISIBLE "NO MOAR"!
+            NOWAI
+                VISIBLE VAR!
+        KTHX
+        VISIBLE " BOTTLZ OF BEER N TEH WALL!"
+        IZ VAR LIEK 0?
+            GTFO
+        KTHX
+    KTHX
+    VISIBLE "GIEV MOAR PLZ! KTHXBAI!"
+KTHXBYE
+```
+
+-----
+## Lisp
+
+```
+(define bottles
+  (lambda (n)
+    (cond ((= n 0) (display "No more bottles"))
+          ((= n 1) (display "One bottle"))
+          (else (display n) (display " bottles")))
+    (display " of beer")))
+
+(define beer
+  (lambda (n)
+    (if (> n 0)
+        (begin
+          (bottles n) (display " on the wall") (newline)
+          (bottles n) (newline)
+          (display "Take one down, pass it around") (newline)
+          (bottles (- n 1)) (display " on the wall") (newline)
+          (newline)
+          (beer (- n 1))))))
+
+(beer 99)
+```
+
+-----
 ## Piet
 
 ![x](https://upload.wikimedia.org/wikipedia/commons/d/d0/Piet_Program.gif)
