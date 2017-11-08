@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Times Change: Latency Numbers Every Programmer Should Know, by Year
+title: Times Change--Latency Numbers Every Programmer Should Know, by Year
 ---
 
 [Here](https://people.eecs.berkeley.edu/~rcs/research/interactive_latency.html) is a cool presentation of the "Numbers Every Programmer Should Know"
