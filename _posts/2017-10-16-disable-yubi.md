@@ -1,14 +1,10 @@
 ---
 layout: post
-title: two different ways to enable/disable a yubikey
+title: Enable/disable yubikey
 ---
 
-Yubikey tokens are USB devices that emit a passcode when touched.
-
-Sometimes they accidentally generate a passcode due to accidental contact.
-
-Here are two ways that they can be enabled/disabled so as to avoid accidental
-triggering.
+Here are two ways to enable/disable touch-sensitive yubikey security tokens so
+as to avoid accidental triggering.
 
 ### Bind/unbind from USB HID driver
 
