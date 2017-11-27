@@ -23,7 +23,7 @@ Syncing disks.
 Then format:
 
 ```
-# mkfs.vfat /dev/sde1
+# mkfs.vfat /dev/whatever
 ```
 
 One day I suppose such workarounds will no longer be available.  Hopefully by that time, the world will have grown up a bit.
