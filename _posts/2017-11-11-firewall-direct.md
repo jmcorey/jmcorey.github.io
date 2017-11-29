@@ -13,4 +13,8 @@ firewall-cmd --permanent --direct --add-rule ipv4 filter INPUT 1 -p tcp -m tcp -
 
 This is a very simple recipe, but should work.  Remember to test.
 
-Reminder, permanent settings do not take affect until you restart the firewall.
+Reminder, permanent settings do not take affect until you restart the firewall:
+
+```
+systemctl restart firewalld
+```
