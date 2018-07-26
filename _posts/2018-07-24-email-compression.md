@@ -1,9 +1,9 @@
 ---
 layout: post
-title: zstd compression FTW
+title: Zstandard compression FTW
 ---
 
-The zstd compression tool seems like a good default choice for general purpose.
+The `zstd` compression tool seems like a good general purpose choice these days.
 
 There are some exotic compression systems (e.g. phda9, cmix) vying for the
 absolute best compression ratio at the [Large Text Compression
@@ -16,7 +16,8 @@ normally use it.  But as you can see, compression has evolved a lot since the
 days when .Z was the only item on the NeXT menu.  There is now... too much to
 choose from.
 
-Here are some measurements taken against various files.
+Here are some measurements taken against various files, followed by notes
+and conclusions.
 
 *No effort was made to enable multi-threaded operation.  Please bear in mind
 that the CPU number will of course vary based on the type of machine and the
@@ -176,16 +177,16 @@ compress and decompress; xz is still sensible for compression ratio emphasis.
 
 * compress is a complete joke these days
 * zpaq is quite good, but egregiously expensive in both directions
-* brotli is also good but expensive... but zstd -19 is better and faster
-* cranking up lz4 isn't worthwhile--zstd -19 is better and faster
-* plain zstd is almost half the size of plain lz4, with similar speed
-* gzip and bzip2 compress better than lz4, but... zstd is better and faster
+* brotli is also good but expensive... xz -9 is usually better and faster, and sometimes cranking up zstd is competitive
+* cranking up lz4 isn't worthwhile--zstd is almost always better and faster
+* plain zstd is much smaller than plain lz4, with similar speed
+* gzip and bzip2 compress better than lz4, but usually zstd is better and faster
 * xz (LZMA) tends to compress better than zstd, but is slower.
 
 ### My personal conclusions
 
 * if **compress CPU** is a driving concern: probably just use **zstd** (or nothing)
-* if **decompress CPU** is more important: probably use **zstd -19**
+* if **decompress CPU** is more important: probably use **zstd --ultra -22**
 * if **compression ratio** outweighs CPU: probably use **xz -9** (or something exotic)
 
 ### Notes on Zstandard
