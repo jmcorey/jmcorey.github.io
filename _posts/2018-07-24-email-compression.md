@@ -1,35 +1,39 @@
 ---
 layout: post
-title: Zstandard compression FTW
+title: Zstandard compression vs alternatives
 ---
 
 The `zstd` compression tool seems like a good general purpose choice these days.
 
-There are some exotic compression systems (e.g. phda9, cmix) vying for the
-absolute best compression ratio at the [Large Text Compression
-Benchmark](http://mattmahoney.net/dc/text.html), most of which are
-prohibitively expensive in CPU.  I wanted to check for myself, so I did some
-measurements against a bunch of different systems which were come pre-packaged
-for linux--no install effort needed.  I included zpaq for comparison, though it
-has a clumsy windows-ish interface, and runs very slowly, so I wouldn't
-normally use it.  But as you can see, compression has evolved a lot since the
-days when .Z was the only item on the NeXT menu.  There is now... too much to
-choose from.
+There are of course some awesome exotic compression systems (e.g. phda9, cmix)
+vying for the absolute best compression ratio at the [Large Text Compression
+Benchmark](http://mattmahoney.net/dc/text.html), many of which are however
+prohibitively expensive in CPU.  I wanted to check for myself how the various
+alternatives fared on common tasks, rather than rely on possibly biased
+reviews, so I did some measurements against a bunch of different compression
+systems which are available pre-packaged for linux--no install effort needed.
+I included zpaq for comparison, though it has a clumsy windows-ish interface,
+and runs very slowly, so I wouldn't normally use it.  But as you can see,
+compression has evolved a lot since the days of .Z.  There is now... too much
+to choose from... but amazing progress.
 
 Here are some measurements taken against various files, followed by notes
 and conclusions.
 
-*No effort was made to enable multi-threaded operation.  Please bear in mind
-that the CPU number will of course vary based on the type of machine and the
-quality of implementation.  For example, the zpaq numbers probably reflect
-the lack of speed optimization of a reference compression implementation.*
+*No effort was made to enable multi-threaded operation, which of course can
+yield faster results.  Please bear in mind that the speed will of course
+vary based on the type of machine and the quality of implementation.  For
+example, the zpaq numbers probably reflect a lack of speed optimization of a
+reference implementation.*
 
 ### Inbox file
 
 This file is a large email inbox file I had on my system.
 
-I'd probably choose `zstd -9` since I don't care too much about maximizing
-compression, just don't want to spend a whole lot of CPU time.
+I'd probably choose `zstd -9` as a sweet spot.  If I cared a lot about
+maximizing compression, I'd opt for `xz -9` rather than increase the
+compression effort level of `zstd`.  But I don't care--it's not that CPU time
+is a big deal, I'm just impatient.
 
 | method | bytes | compress ratio | compress time | decompress time |
 |:------   |:---------| ----:| ------:| ------:|
@@ -55,9 +59,15 @@ compression, just don't want to spend a whole lot of CPU time.
 This file came from tests for Snappy, and has a representative sample of 10000
 URLs.  A different kind of pattern than english text.
 
-Brotli did pretty well--not too surprising given context. LZMA (`xz`) shines
-here, but I'd still say `zstd` is a sensible choice if fast compression is
-needed.
+There are also a lot of applications for this type of data where it's OK to
+spend more time compressing, but compression ratio matters a lot and
+decompression speed is the top priority, which seems like it might rule out
+`xz` in favor of `brotli`, though the latter comes at a heavy price in
+compression time.  If that price is not acceptable, then `zstd` looks like
+a sensible option--certainly a better choice than `lz4`, although it would
+be nice if I had shown more precision on the decompression time.  I am
+wondering whether any markdown converters allow the table to be resorted
+according to different columns at the reader's convenience.
 
 | method | bytes | compress ratio | compress time | decompress time |
 |:------   |:---------| ----:| ------:| ------:|
@@ -119,11 +129,13 @@ choose based on access patterns.  I think for this type of data I would be
 tempted to use `xz`, or maybe one day `zpaq` if there is a fast version.
 
 `bzip2` did very well. `zstd` is still an acceptable choice, but `gzip` is
-relatively defensible, especially since it is so standard. Even so, `zstd -9` is
-better than `gzip -9` in every measured aspect.
+also relatively defensible, especially since it is so standard. Even so,
+`zstd -9` is better than `gzip -9` in every measured aspect.
 
 High compression may require domain-specific approaches, just as with
-audiovisual data.
+audiovisual data.  Also, if the data represents measurements that already
+have a small amount of built-in error, then lossy techniques might be
+appropriate.
 
 | method | bytes | compress ratio | compress time | decompress time |
 |:------   |:---------| ----:| ------:| ------:|
@@ -147,12 +159,13 @@ audiovisual data.
 ### OSDB MySql file
 
 This file came from the Open Source Database Benchmark, and represents a binary MySql
-database file.  These results may be of special interest to database developers.
+database file.  These results may be of interest to database developers.
 
 I would be tempted to use `bzip2` in this case, though `zstd -15` does OK.
 What happened here?  Looks like bzip2 went into berzerker mode or something.
 There is some very interesting saga to be told here.  Zstd is alright for fast
-compress and decompress; xz is still sensible for compression ratio emphasis.
+compress and decompress; xz is still sensible for compression ratio emphasis,
+though it's expensive to construct. zpaq is untouchable but unbearable.
 
 | method | bytes | compress ratio | compress time | decompress time |
 |:------   |:---------| ----:| ------:| ------:|
@@ -177,13 +190,15 @@ compress and decompress; xz is still sensible for compression ratio emphasis.
 
 * compress is a complete joke these days
 * zpaq is quite good, but egregiously expensive in both directions
-* brotli is also good but expensive... xz -9 is usually better and faster, and sometimes cranking up zstd is competitive
+* brotli is also good but expensive... xz -9 is usually better and faster (though may have higher decompress time), and sometimes cranking up zstd is competitive
 * cranking up lz4 isn't worthwhile--zstd is almost always better and faster
 * plain zstd is much smaller than plain lz4, with similar speed
-* gzip and bzip2 compress better than lz4, but usually zstd is better and faster
-* xz (LZMA) tends to compress better than zstd, but is slower.
+* gzip and bzip2 compress better than lz4, but usually zstd is better and faster than either
+* xz tends to compress better than zstd, but is slower.
 
 ### My personal conclusions
+
+General rules of thumb, at this time:
 
 * if **compress CPU** is a driving concern: probably just use **zstd** (or nothing)
 * if **decompress CPU** is more important: probably use **zstd --ultra -22**
