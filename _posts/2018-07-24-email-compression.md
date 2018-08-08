@@ -178,8 +178,8 @@ There is some very interesting saga to be told!  Zstd is OK for fast
 compress and decompress; xz is pretty good for compression ratio emphasis,
 though it's expensive to construct. zpaq is, as always, best but slowest.
 
-| *` method `* | *`, resulting size `* | *`, compress ratio `* | *`, compress time `* | *`, decompress time `* |
-|:------   |:---------| ----:| ------:| ------:|
+| *`method`* | *`, bytecount`* | *`, compress ratio`* | *`, compress time`* | *`, decompress time`* |
+|:------   |---------:| ----:| ------:| ------:|
 | cat      | 10085684 | 1.00 |   0.00 |   0.00 |
 | lz4      |  5261242 | 1.91 |   0.05 |   0.02 |
 | compress |  4386421 | 2.29 |   0.40 |   0.13 |
