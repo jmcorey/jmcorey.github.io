@@ -44,7 +44,7 @@ maximizing compression, I'd opt for `xz -9` rather than increase the
 compression effort level of `zstd`.  But I don't care--it's not that CPU time
 is a big deal, I'm just impatient.
 
-| *` method `* | *`, bytes `* | *`, compress ratio `* | *`, compress time `* | *`, decompress time `* |
+| *` method`* | *`, resulting size `* | *`, compress ratio `* | *`, compress time `* | *`, decompress time `* |
 |:------   |:---------| ----:| ------:| ------:|
 | cat      | 63968176 | 1.00 |   0.00 |   0.00 |
 | compress | 38488271 | 1.66 |   2.05 |    .75 |
@@ -78,7 +78,7 @@ be nice if I had shown more precision on the decompression time.  I am
 wondering whether any markdown converters allow the table to be resorted
 according to different columns at the reader's convenience.
 
-| *` method `* | *` bytes `* | *` compress ratio `* | *` compress time `* | *` decompress time `* |
+| *` method `* | *`, resulting size `* | *`, compress ratio `* | *`, compress time `* | *`, decompress time `* |
 |:------   |:---------| ----:| ------:| ------:|
 | cat      |   702087 | 1.00 |   0.00 |   0.00 |
 | lz4      |   335857 | 2.09 |   0.00 |   0.00 |
@@ -108,7 +108,7 @@ I tried some experiments with zstd dictionary training on library files, but
 significant improvement was elusive.  Probably works better when it's just a
 different language.
 
-| *` method `* | *` bytes `* | *` compress ratio `* | *` compress time `* | *` decompress time `* |
+| *` method `* | *`, resulting size `* | *`, compress ratio `* | *`, compress time `* | *`, decompress time `* |
 |:------   |:---------| ----:| ------:| ------:|
 | cat      | 99803720 | 1.00 |   0.00 |   0.00 |
 | compress | 64826447 | 1.53 |   2.84 |   1.34 |
@@ -148,7 +148,7 @@ audiovisual data.  Also, if the data represents measurements that already
 have a small amount of built-in error, then lossy techniques might be
 appropriate.
 
-| *` method `* | *` bytes `* | *` compress ratio `* | *` compress time `* | *` decompress time `* |
+| *` method `* | *`, resulting size `* | *`, compress ratio `* | *`, compress time `* | *`, decompress time `* |
 |:------   |:---------| ----:| ------:| ------:|
 | cat      |  7251944 | 1.00 |   0.00 |   0.00 |
 | lz4      |  6790464 | 1.06 |   0.04 |   0.02 |
@@ -178,7 +178,7 @@ There is some very interesting saga to be told!  Zstd is OK for fast
 compress and decompress; xz is pretty good for compression ratio emphasis,
 though it's expensive to construct. zpaq is, as always, best but slowest.
 
-| *` method `* | *` bytes `* | *` compress ratio `* | *` compress time `* | *` decompress time `* |
+| *` method `* | *`, resulting size `* | *`, compress ratio `* | *`, compress time `* | *`, decompress time `* |
 |:------   |:---------| ----:| ------:| ------:|
 | cat      | 10085684 | 1.00 |   0.00 |   0.00 |
 | lz4      |  5261242 | 1.91 |   0.05 |   0.02 |
