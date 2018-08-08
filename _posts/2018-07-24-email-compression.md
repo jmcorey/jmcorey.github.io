@@ -44,7 +44,7 @@ maximizing compression, I'd opt for `xz -9` rather than increase the
 compression effort level of `zstd`.  But I don't care--it's not that CPU time
 is a big deal, I'm just impatient.
 
-| *` method `* | *` bytes `* | *` compress ratio `* | *` compress time `* | *` decompress time `* |
+| *` method `* | *`, bytes `* | *`, compress ratio `* | *`, compress time `* | *`, decompress time `* |
 |:------   |:---------| ----:| ------:| ------:|
 | cat      | 63968176 | 1.00 |   0.00 |   0.00 |
 | compress | 38488271 | 1.66 |   2.05 |    .75 |
