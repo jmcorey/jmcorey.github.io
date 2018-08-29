@@ -74,33 +74,72 @@
 
 ### Cura
 
-* ultimaker 3d printers, but supports others
-* can drive printer
+* originally written by David Braam (prior to hire at Ultimaker)
+* C++, Python, and Qml
+* not just slicing, can also drive printer
+* open source, but 90% of features developed at ultimaker
+* supports ultimaker 3d printers, but also many others
+* lulzbot hacks on a fork for their printers, but plain cura also works
+* for some reason, recent versions don't support direct USB connection
+* LGPLv3
+* [source code](https://github.com/Ultimaker/Cura)   very active as of 2018
+  * 100 committers
+* [wikipedia](https://en.wikipedia.org/wiki/Cura_(software))
 
 ### RepSnapper
 
+* originally written by Kulitorum (Michael Holm of Copenhagan) in C++
+* now maintained by Tim Schmidt
 * "for controlling the RepRap 3D printer"
-* can convert STL to GCode
+  * slicing as well as printer driving
+* 3d model input formats: STL, OBJ, **X3D**, 3MF
+* https://github.com/timschmidt/repsnapper  still maintained, not much traffic
+* https://reprap.org/wiki/RepSnapper_Manual:Introduction
+* https://github.com/timschmidt/repsnapper/blob/master/doc/manual.asciidoc
 
 ### Slic3r
 
-### SFACT
-
-* improved version of Skeinforge
-* python scripts
+* originally written by Alessandro Ranellucci in C++11
+  * unit tests in Catch2--looking like some good quality software
+* originally just slicing (tool path generation) but now does more
+  * model conversion and repair
+  * USB and Octoprint output, multiple queues
+* 3d model input formats: STL, OBJ, **AMF**, 3MF
+* GNU Affero General Public License
+* [source code](https://github.com/slic3r/Slic3r)  very active as of 2018
+  * 83 committers
+* http://slic3r.org/
+* command line or GUI
+* prusa has a fork optimized for i3
 
 ### Skeinforge
 
-### Makerware?
+* originally written by Enrique Perez in Python
+* early G-code translator alternative to Bowyer's RepRap Host
+* GNU Affero General Public License
+* seems somewhat defunct (last commit ~2012) (webpage down)
+* blog http://fabmetheus.blogspot.com/ ends ~2012
+
+### SFACT
+
+* improved version of Skeinforge, also in Python
+* GNU Affero General Public License
+* https://reprap.org/wiki/Sfact
+* https://github.com/ahmetcemturan/SFACT
+* only 55 commits from 3 devs from 2012 to 2013
+
+### Makerware
+
+* from MakerBot, "free" rather than open
+* their linux install page is worse than adobe; various half-baked binary pkgs
 
 ### Non-open-source or non-linux-support
 
-I.e. not worth pursuing:
+Not worth pursuing:
 
 * CraftWare (slicer)
 * Fusion 360 (design)
 * IdeaMaker/Raise3d
-* Makerbot/Makerware?
 * Meshmixer (STL editor)
 * Netfabb (STL repair and slicer)
 * Sculptris (design)
@@ -114,13 +153,17 @@ I.e. not worth pursuing:
 * how good are the automatically generated supports?
 * what does it do if you try to print something with walls thinner than nozzle?
 * can you postprocess gcode in user-selected language (slic3r supports this)
-* how fast does it generate the slices, vs how quickly they print
+* how fast does it generate the slices, and how quickly they print
+  * ideal visualization: an objective quality metric graph vs print speed
 * octoprint integration?
 * command-line mode available?
 
 ## Printer controller
 
 ### Franklin
+
+* firmware for printer
+* allows 3D printer to also be used for milling etc not just FDM
 
 ### Printrun
 

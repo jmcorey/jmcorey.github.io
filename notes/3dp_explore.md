@@ -16,6 +16,8 @@
 * Gizmodorks blog https://gizmodorks.com/blog/
 * academic papers regarding 3D printing
   * https://www.academia.edu/31327768/Emergence_of_Home_Manufacturing_in_the_Developed_World_Return_on_Investment_for_Open-Source_3-D_Printers
+* https://3dinsider.com/
+  * e.g. has article on hemp filament
 * peruse 3D printer design sharing site http://www.thingiverse.com
 * Youtube channels:
   * LRN2DIY

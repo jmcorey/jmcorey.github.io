@@ -50,6 +50,18 @@ UINT32 -- NT -- number of triangles
 
 * stored in binary format using attribute byte; cf wikipedia article
 
+## AMF
+
+* "Additive Manufacturing Format"
+* XML-based, ISO/ASTM 52915:2016
+* like STL but supports color, material (including mixed & lattice)
+* constellations (groupings of multiple elements)
+  * including relative position/orientation
+  * efficient packing
+  * can group hierarchically
+* curvature--specify normal vector for each vertex (smooth vs pointy)
+* https://en.wikipedia.org/wiki/Additive_Manufacturing_File_Format
+
 ## X3D
 
 * successor to VRML
@@ -104,7 +116,7 @@ UINT32 -- NT -- number of triangles
 * both additive and subtractive manufacturing
 * originally MIT Servomechanisms Laboratory (late 1950s)
 * modern versions support high level macros
-* "GCode" somewhat of a misnomer--all letters used
+* "GCode" somewhat of a misnomer--all letters used in some context
   * G (geometric/preparatory) somewhat standardardized
     * G0 -- rapid positioning
     * G1 -- linear interpolation, controlled rate
