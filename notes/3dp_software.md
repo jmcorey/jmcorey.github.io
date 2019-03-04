@@ -35,9 +35,15 @@
 
 ### MeshLab
 
+* cross-platform, GPL
 * system for processing and editing unstructured 3D triangular meshes
   * typically 3D scans as input
   * cleaning, healing, inspecting
+* initially created in 2005 as a course assignment at University of Pisa
+* no undo?
+* conversion between many different formats
+* simple recipe to improve a low-poly model:
+  * Filters / Remeshing / SubdivisionSurfaces:ButterflySubdivision
 
 ### MolView
 
