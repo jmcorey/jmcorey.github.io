@@ -1,35 +1,38 @@
 ---
 layout: post
-title: quick guide to setting up irssi for freenode
+title: Quick guide to setting up irssi for freenode
 ---
-
-### Useful links
-
-* https://irssi.org/documentation/startup/
-* https://gist.github.com/chirag64/3c80a08a7fc1d2c52ea0
-* https://wiki.archlinux.org/index.php/Irssi
-* https://freenode.net/kb/answer/registration
-* https://freenode.net/kb/answer/certfp
-* https://www.offensive-security.com/offsec-irc-guide/
-* https://minecraftonline.com/wiki/Irssi_Secure_IRC_Client
 
 ### Preface
 
 Install `irssi` via package manager, then have a look in `/etc/irssi.conf` to
 verify that they have a reasonable TLS-protected server entry for freenode.
 
+The following links were informative:
+[link](https://irssi.org/documentation/startup/)
+[link](https://gist.github.com/chirag64/3c80a08a7fc1d2c52ea0)
+[link](https://wiki.archlinux.org/index.php/Irssi)
+[link](https://freenode.net/kb/answer/registration)
+[link](https://freenode.net/kb/answer/certfp)
+[link](https://www.offensive-security.com/offsec-irc-guide/)
+[link](https://minecraftonline.com/wiki/Irssi_Secure_IRC_Client)
+
 ### Client cert generation
 
 This will allow you to bind a cert to your nick when you connect.  See the
-instructions at https://freenode.net/kb/answer/certfp for more info:
+[freenode cert instructions](https://freenode.net/kb/answer/certfp) for more
+info:
 
 ```
-openssl req -x509 -new -newkey rsa:4096 -sha256 -days 1000 -nodes \
+openssl req -x509 -new -newkey rsa:4096 -sha256 \
+  -days 1000 -nodes \
   -out freenode.pem -keyout freenode.pem
 openssl x509 -in freenode.pem -outform der | sha1sum -b | cut -d' ' -f1
 ```
 
 Make a note of the fingerprint shown.
+
+Now stuff the cert into your irssi config area:
 
 ```
 mkdir -p ~/.irssi/certs
